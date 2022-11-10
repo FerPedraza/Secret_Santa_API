@@ -1,4 +1,5 @@
-﻿using SecretSanta.Core.Entities;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using SecretSanta.Core.Entities;
 using SecretSanta.Core.Interfaces;
 using System;
 using System.Collections;
@@ -60,11 +61,22 @@ namespace SecretSanta.Services.Services
                     });
                 }
             }
+            if (givingPeople.Count == 3)
+            {
+                Raffle.Add(new Pair(givingPeople[0], participants[2]));
+                Raffle.Add(new Pair(givingPeople[1], participants[0]));
+                Raffle.Add(new Pair(givingPeople[2], participants[1]));
+
+            }
+            else
+            {
+
             givingPeople.ForEach(givingPerson =>
             {
                 Boolean match = false;
                 while (!match)
                 {
+                    
                     int index = random.Next(participants.Count );
                     if (givingPerson.Name != participants[index].Name)
                     {
@@ -78,6 +90,7 @@ namespace SecretSanta.Services.Services
                 }
 
             });
+            }
 
 
 
