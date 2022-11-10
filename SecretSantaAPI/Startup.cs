@@ -29,6 +29,7 @@ namespace SecretSantaAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            AddSwagger(services);
             services.AddTransient<IRaffleRepository, RaffleRepository>();
             services.AddTransient<IRaffleService, RaffleService>();
         }
@@ -44,6 +45,13 @@ namespace SecretSantaAPI
 
             app.UseHttpsRedirection();
 
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Foo API V1");
+            });
+
             app.UseRouting();
 
             app.UseAuthorization();
@@ -51,6 +59,15 @@ namespace SecretSantaAPI
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+            });
+        }
+        private void AddSwagger(IServiceCollection services)
+        {
+            services.AddSwaggerGen(options =>
+            {
+                var groupName = "v1";
+
+                
             });
         }
     }

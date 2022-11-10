@@ -22,6 +22,16 @@ namespace SecretSantaAPI.Controllers
             _raffleService = raffleService;
         }
 
+
+        /// <summary>
+        /// Retrieves random pairs of people that were entered in the request
+        /// </summary>
+        /// <remarks>Follow the request format</remarks>
+        /// <response code="200">Draw successful</response>
+        /// <response code="400">Request has missing/invalid values</response>
+        /// <response code="500">Oops! Can't draw your secret santa right now</response>
+
+
         [HttpPost]
         [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(ApiResponse<Raffle>))]
         public async Task<IActionResult> GetRaffle([FromBody] RaffleRequest req )
