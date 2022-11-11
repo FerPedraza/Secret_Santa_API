@@ -41,12 +41,7 @@ namespace SecretSantaAPI.Controllers
             {
                 res = new ApiResponse<Raffle>(null) { Code = 1, Status = "Failed", Message = "No participants provided" };
                 return Ok(res);
-            }/*
-            if (req.People.Count % 2 != 0)
-            {
-                res = new ApiResponse<Raffle>(null) { Code = 1, Status = "Failed", Message = "Number of participants not even. Provide a consistent number of people." };
-                return Ok(res);
-            }*/
+            }
             if (req.Groups.Count >0)
             {
                 Boolean maxGroup = false;

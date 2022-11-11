@@ -16,9 +16,9 @@ namespace SecretSanta.Infrastructure.Repositories
         }
         public List<Pair> SetRaffle(List<Pair> raffleSecuence)
         {
-            _Raffle = new Raffle(0, raffleSecuence);
+            //_Raffle = new Raffle(0, raffleSecuence);
 
-            return _Raffle.RaffleSequence;
+            return raffleSecuence;
         }
         public List<Pair> GetRaffle(int id)
         {
